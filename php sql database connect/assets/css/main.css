@@ -1,0 +1,10 @@
+table{
+    border: 2px solid red;
+    background-color: #ffc;
+}
+th{
+    border-bottom: 5px solid black;
+}
+td{
+    border-bottom: 2px solid #666;
+}

@@ -1,6 +1,23 @@
 <?php
-    include 'index.sql.php';
+$host = 'localhost';
+$dbname = 'weatherapp';
+$username = 'geert';
+$password = 'geert';
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+
+    $sql = 'SELECT * FROM weather';
+
+    $q = $pdo->query($sql);
+    $q->setFetchMode(PDO::FETCH_ASSOC);
+
+} catch (PDOException $e) {
+    die("Could not connect to the database $dbname :" . $e->getMessage());
+}
+
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -33,11 +50,11 @@
         </thead>
         <tbody>
         <?php while ($row = $q->fetch()): ?>
-        <tr>
-            <td><?php echo htmlspecialchars($row['city']) ?></td>
-            <td><?php echo htmlspecialchars($row['high']); ?></td>
-            <td><?php echo htmlspecialchars($row['low']); ?></td>
-        </tr>
+            <tr>
+                <td><?php echo htmlspecialchars($row['city']) ?></td>
+                <td><?php echo htmlspecialchars($row['high']); ?></td>
+                <td><?php echo htmlspecialchars($row['low']); ?></td>
+            </tr>
         <?php endwhile; ?>
         </tbody>
     </table>

@@ -1,5 +1,5 @@
 <?php
-include 'index.sql.php';
+include 'index.php';
 
 if(isset($_POST['submit'])){
     $city = $_POST['city'];

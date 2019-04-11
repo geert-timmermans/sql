@@ -11,6 +11,7 @@ if (isset($_POST['submitted'])){
 
     //if statement for checking if the insert is true or false.
     //when false, give error message
+    //check if connection is established and insert
     if (!mysqli_query($dbcon, $sqlinsert)){
         die('error inserting new record');
     } else{ //header = build in function => redirects to other location

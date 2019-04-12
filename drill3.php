@@ -27,6 +27,6 @@ echo'<a href="https://github.com/becodeorg/GNK-Holberton-1.9/blob/master/3-De-be
 "SELECT firstname, lastname, age, gender FROM octocats WHERE promo = 'promo1-central' AND gender LIKE 'M%' AND age BETWEEN 25 AND 35 ORDER BY age ASC"
 
 //Display the first name, last name, age of the oldest octocate of Becode / Central. So you have to get a table with a single row.
-"SELECT firstname, lastname, MAX(age) FROM octocats WHERE promo = 'promo1-central'"
+"SELECT firstname, lastname, MAX(age) AS age FROM octocats WHERE promo = 'promo1-central'"
 
 ?>

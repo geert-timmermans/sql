@@ -1,78 +1,16 @@
-body{
-    background-color: #808080;
-    text-align: center;
-}
+/*body{*/
+/*    background-color: #808080;*/
+/*    text-align: center;*/
+/*}*/
 label, select, input{
     width: 150px;
     display: inline-block;
     margin: 5px 0;
 }
 h1{
-    border: 3px dashed #000000;
-}
-a{
-    text-decoration: none;
-    color: #000;
-}
-table{
-    width: 100%;
-}
-th{
-    border: 1px solid #000000;
-}
-td{
-    border-bottom: 1px solid #000000;
-    padding: 10px;
-}
-.table-border-left{
-    border-left: 1px solid #000000;
-}
-.table-border-right{
-    border-right: 1px solid #000000;
-}
-tr:nth-child(odd) {
-    background-color: #E0E0E0;
-}
-tr:nth-child(even), #bgc-thead {
-    background-color: #BEBEBE;
-}
-.buttons{
-    margin-top: 40px;
-    height: 50px;
-}
-#btn-add{
-    height: 100%;
-}
-.update-link{
-    padding: 0.6em 1.2em;
-}
-#update{
-    border-radius: 0.5em;
-}
-.update-link:hover{
-    color: #f0f0f0;
-}
-#btn-create-send{
-    margin-top: 25px;
-    width: 100px;
-    height: 40px;
-}
-.btn-back{
-    margin-top: 25px;
-    width: 100px;
-    height: 40px;
-    margin-left: 20px;
-}
-.a-btn{
-    padding: 0.9em 2.3em;
+    text-align: center;
 }
 
-#update-message{
-    background-color: #000;
-    color: #fff;
-    width: 25%;
-    margin: auto;
-    font-size: 1.2em;
-    font-weight: bold;
-    border-radius: 1em;
+.bgc-container{
+    background-color: #d6d8d9;
 }

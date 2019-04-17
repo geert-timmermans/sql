@@ -1,5 +1,4 @@
 <?php
-
 //connect to sql database with pdo
 $host = 'localhost';
 $db   = 'reunion_island';

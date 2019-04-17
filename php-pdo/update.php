@@ -1,21 +1,36 @@
 <?php
 include 'connect.php';
-$sql = 'SELECT * FROM weather';
 
-$q = $pdo->query($sql);
-$q->setFetchMode(PDO::FETCH_ASSOC);
+$city = $_GET['city'];
+$sqlinsert = 'SELECT * FROM weather WHERE city= :city';
+$stmt = $pdo->prepare($sqlinsert);
+$stmt->execute([':city'=>$city]);
 
-if(isset($_GET['create'])){
-    $createMessage = 'City has been added';
-}
-if(isset($_GET['delete'])){
-    $createMessage = 'City has been deleted';
-}
-if(isset($_GET['update'])){
-    $createMessage = 'City has been updated';
+foreach ($stmt as $row) {
+    $city = $row['city'];
+    $high = $row['high'];
+    $low = $row['low'];
 }
 
+if (isset($_POST['submit'])) {
 
+    $updateCity = $_POST["city"];
+    $updateHigh = $_POST['high'];
+    $updateLow = $_POST['low'];
+
+    $sqlUpdate = "UPDATE weather SET  city=:updateCity, high=:updateHigh, low=:updateLow WHERE city=:city";
+    $stmt = $pdo->prepare($sqlUpdate);
+
+    $stmt->bindParam(':updateCity', $updateCity);
+    $stmt->bindValue(':updateHigh', $updateHigh);
+    $stmt->bindValue(':updateLow', $updateLow);
+
+    if (!$stmt->execute()) {
+        die('error inserting new record');
+    } else {
+        header('Location: index.php?update');
+    }
+}
 ?>
 
 <!doctype html>
@@ -29,26 +44,22 @@ if(isset($_GET['update'])){
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<div class="alert alert-dark text-center alert-dismissible w-25 mx-auto" role="alert">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <?php echo $createMessage?>
-</div>
 <div class="container-fluid">
-    <h1 class="text-center my-4">Weather</h1>
+    <h1 class="text-center my-4">Update</h1>
     <div class="row">
-        <form action="submit.php" method="POST" class="col-10 offset-1 container">
+        <form action="" method="POST" class="col-10 offset-1 container">
             <div class="row">
                 <div class="col-3">
                     <label for="city">City</label><br>
-                    <input type="text" name="city">
+                    <input type="text" name="city" value="<?php echo $city ?>">
                 </div>
                 <div class="col-3">
                     <label for="high">High</label><br>
-                    <input type="number" name="high">
+                    <input type="number" name="high" value="<?php echo $high ?>">
                 </div>
                 <div class="col-3">
                     <label for="low">Low</label><br>
-                    <input type="number" name="low">
+                    <input type="number" name="low" value="<?php echo $low ?>">
                 </div>
                 <div class="col-3 mt-4">
                     <input type="submit" name="submit">
@@ -56,30 +67,6 @@ if(isset($_GET['update'])){
             </div>
         </form>
     </div>
-    <br>
-    <table class="table table-bordered table-condensed">
-        <thead>
-        <tr>
-            <th class="w-25"></th>
-            <th>City</th>
-            <th>High</th>
-            <th>Low</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php while ($row = $q->fetch()): ?>
-            <tr>
-                <td class="d-flex justify-content-center">
-                    <a href="update.php?city=<?php echo $row['city']?>" class="btn btn-outline-success">Update</a>
-                    <a href="delete.php?city=<?php echo $row['city']?>" class="btn btn-outline-danger ml-3">Delete</a></td>
-                <td><?php echo htmlspecialchars($row['city']) ?></td>
-                <td><?php echo htmlspecialchars($row['high']); ?></td>
-                <td><?php echo htmlspecialchars($row['low']); ?></td>
-
-            </tr>
-        <?php endwhile; ?>
-        </tbody>
-    </table>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -1,5 +1,5 @@
 <?php
-include 'index.php';
+include 'connect.php';
 
 if(isset($_POST['submit'])) {
     $city = $_POST['city'];
@@ -21,7 +21,7 @@ if(isset($_POST['submit'])) {
     if (!$stmt->execute()) {
         die('error inserting new record');
     } else {
-        echo 'Hike has been added';
+        header('Location: index.php?create');
     }
 }
 

@@ -50,7 +50,7 @@ if(isset($_GET['delete'])){
             <td class="table-border-right text-center"><?php echo $row['height_difference']; ?></td>
             <td>
                 <a href="update.php?id=<?php echo $row['id']?>"><button type="button" class="btn btn-outline-info">Update</button></a>
-                <a href="delete.php?id=<?php echo $row['id']?>"><button type="button" class="btn btn-outline-danger" name="deleteBtn">Delete</button></a>
+                <a href="delete.php?id=<?php echo $row['id']?>"><button type="button" class="btn btn-outline-danger ml-1" name="deleteBtn">Delete</button></a>
             </td>
 
         </tr>

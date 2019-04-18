@@ -14,22 +14,25 @@ foreach ($stmt as $row) {
 
 if (isset($_POST['submit'])) {
 
-    $updateCity = $_POST["city"];
+    $updateCity = $_POST['city'];
     $updateHigh = $_POST['high'];
     $updateLow = $_POST['low'];
 
-    $sqlUpdate = "UPDATE weather SET  city=:updateCity, high=:updateHigh, low=:updateLow WHERE city=:city";
+    $sqlUpdate = "UPDATE weather SET  city=:updateCity, high=:updateHigh, low=:updateLow WHERE city=:updateCity";
     $stmt = $pdo->prepare($sqlUpdate);
 
     $stmt->bindParam(':updateCity', $updateCity);
-    $stmt->bindValue(':updateHigh', $updateHigh);
-    $stmt->bindValue(':updateLow', $updateLow);
+    $stmt->bindValue(':updateHigh', $updateHigh, PDO::PARAM_INT);
+    $stmt->bindValue(':updateLow', $updateLow, PDO::PARAM_INT);
 
-    if (!$stmt->execute()) {
-        die('error inserting new record');
-    } else {
-        header('Location: index.php?update');
-    }
+    $stmt->execute(array(":updateCity" => $updateCity, ":updateHigh" => $updateHigh, ":updateLow" => $updateLow));
+    header('Location: index.php?update');
+
+//    if (!$stmt->execute()) {
+//        die('error inserting new record');
+//    } else {
+//        header('Location: index.php?update');
+//    }
 }
 ?>
 

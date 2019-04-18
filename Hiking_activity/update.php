@@ -16,7 +16,7 @@ include 'connect-mysql.php';
 
 if (isset($_POST['send'])) {
 
-    $hike_name2 = $_POST["hike_name"];
+    $hike_name2 = $_POST['hike_name'];
     $difficulty2 = $_POST['difficulty'];
     $distance2 = $_POST['distance'];
     $duration2 = $_POST['duration'];

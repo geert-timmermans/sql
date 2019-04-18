@@ -31,7 +31,7 @@ if(isset($_GET['update'])){
 <body>
 <div class="alert alert-dark text-center alert-dismissible w-25 mx-auto" role="alert">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <?php echo $createMessage?>
+    <?php echo $createMessage;?>
 </div>
 <div class="container-fluid">
     <h1 class="text-center my-4">Weather</h1>

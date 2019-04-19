@@ -28,9 +28,9 @@ if (isset($_POST['send'])) {
     $stmt->bindParam(':id', $id);
     $stmt->bindParam(':hike_name2', $hike_name2);
     $stmt->bindParam(':difficulty2', $difficulty2);
-    $stmt->bindParam(':distance2', $distance2);
+    $stmt->bindValue(':distance2', $distance2);
     $stmt->bindParam(':duration2', $duration2);
-    $stmt->bindParam(':height_difference2', $height_difference2);
+    $stmt->bindValue(':height_difference2', $height_difference2);
 
     if(!$stmt->execute()){
         die('error inserting new record');

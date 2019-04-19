@@ -18,14 +18,15 @@ if (isset($_POST['submit'])) {
     $updateHigh = $_POST['high'];
     $updateLow = $_POST['low'];
 
-    $sqlUpdate = "UPDATE weather SET  city=:updateCity, high=:updateHigh, low=:updateLow WHERE city=:updateCity";
+    $sqlUpdate = "UPDATE weather SET  city=:updateCity, high=:updateHigh, low=:updateLow WHERE city=:city";
     $stmt = $pdo->prepare($sqlUpdate);
 
+    $stmt->bindParam(':city', $city);
     $stmt->bindParam(':updateCity', $updateCity);
     $stmt->bindValue(':updateHigh', $updateHigh, PDO::PARAM_INT);
     $stmt->bindValue(':updateLow', $updateLow, PDO::PARAM_INT);
 
-    $stmt->execute(array(":updateCity" => $updateCity, ":updateHigh" => $updateHigh, ":updateLow" => $updateLow));
+    $stmt->execute();
     header('Location: index.php?update');
 
 //    if (!$stmt->execute()) {

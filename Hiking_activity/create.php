@@ -21,9 +21,9 @@ if (isset($_POST['send'])) {
     else {
         $stmt->bindParam(':hike_name', $hike_name);
         $stmt->bindParam(':difficulty', $difficulty);
-        $stmt->bindParam(':distance', $distance);
+        $stmt->bindValue(':distance', $distance);
         $stmt->bindParam(':duration', $duration);
-        $stmt->bindParam(':height_difference', $height_difference);
+        $stmt->bindValue(':height_difference', $height_difference);
     }
 
 //    $stmt->execute();

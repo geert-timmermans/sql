@@ -1,7 +1,7 @@
 <?php
 $host = 'localhost';
 $dbname = 'weatherapp';
-$username = 'geert';
+$username = 'root';
 $password = 'geert';
 $charset = 'utf8mb4';
 

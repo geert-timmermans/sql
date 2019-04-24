@@ -1,16 +1,7 @@
 <?php
 include 'connect.php';
 
-$stmt = $pdo->query('SELECT * FROM clients');
-$stmt2 = $pdo->query('SELECT * FROM clients WHERE card = 1');
-
-$loyaltyCard = '';
-if($stmt2 === 1){
-    $loyaltyCard = 'Yes';
-}
-else{
-    $loyaltyCard = 'No';
-}
+$stmt = $pdo->query("SELECT firstName, lastName, birthDate, CASE WHEN card = 1 THEN 'Yes' ELSE 'No' END, CASE WHEN cardNumber IS NULL THEN '' ELSE cardNumber END AS cardNr FROM clients");
 
 ?>
 
@@ -35,6 +26,7 @@ else{
             <th scope="col">First Name</th>
             <th scope="col">Date of Birth</th>
             <th scope="col">Loyalty Card</th>
+            <th scope="col">Card Number</th>
         </tr>
         </thead>
         <tbody>
@@ -43,7 +35,8 @@ else{
                 <td><?php echo $row['lastName']; ?></td>
                 <td><?php echo $row['firstName']; ?></td>
                 <td><?php echo $row['birthDate']; ?></td>
-                <td><?php echo $loyaltyCard ?></td>
+                <td><?php echo $row['card'] ?></td>
+                <td><?php echo $row['cardNr'] ?></td>
             </tr>
         <?php } ?>
         </tbody>

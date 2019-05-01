@@ -27,12 +27,12 @@ if (isset($_POST['submit'])) {
     $stmt->bindValue(':updateLow', $updateLow, PDO::PARAM_INT);
 
     $stmt->execute();
-    header('Location: index.php?update');
+    header('Location: form.php?update');
 
 //    if (!$stmt->execute()) {
 //        die('error inserting new record');
 //    } else {
-//        header('Location: index.php?update');
+//        header('Location: form.php?update');
 //    }
 }
 ?>

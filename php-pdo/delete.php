@@ -9,7 +9,7 @@ if(isset($_GET['city'])){
     $stmtdelete->bindParam(':city', $city);
 
     $stmtdelete->execute();
-    header('Location: index.php?delete');
+    header('Location: form.php?delete');
 }
 
 ?>

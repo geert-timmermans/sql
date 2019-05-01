@@ -58,7 +58,7 @@ if(isset($_GET['delete'])){
         <?php } ?>
     </tbody>
 </table>
-    <form action="create.php" class="d-flex justify-content-center">
+    <form action="create.php" method="post" class="d-flex justify-content-center">
         <button type="submit" class="btn btn-outline-dark">Add Hike</button>
     </form>
 

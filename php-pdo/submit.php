@@ -21,7 +21,7 @@ if(isset($_POST['submit'])) {
     if (!$stmt->execute()) {
         die('error inserting new record');
     } else {
-        header('Location: index.php?create');
+        header('Location: form.php?create');
     }
 }
 

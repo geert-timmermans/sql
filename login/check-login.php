@@ -32,7 +32,7 @@ if(isset($_POST['login'])) {
 }
 else {
     session_destroy();
-    header('location: index.php');
+    header('location: form.php');
 }
 
 
